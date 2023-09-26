@@ -58,3 +58,6 @@ GET {{baseUrl}}/films/1
 
 ### Read film which does not exist
 GET {{baseUrl}}/films/500
+
+### Delete films identified by 2
+DELETE {{baseUrl}}/films/2
