@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:3000
+
+### Read all pizzas with File variable
+GET {{baseUrl}}/pizzas
+
+### Create a pizza which lacks a property
+POST {{baseUrl}}/pizzas
+Content-Type: application/json
+
+{
+    "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}

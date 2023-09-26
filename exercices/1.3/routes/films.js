@@ -25,14 +25,12 @@ const films = [
   },
 ];
 
-// Read all the films, filtered by minimum-duration if the query param exists
 router.get('/', (req, res) => {
-  const minimumFilmDuration = req?.query
+  const minimumFilmDuration = req?.query['minimum-duration']
     ? Number(req.query['minimum-duration'])
     : undefined;
   if (typeof minimumFilmDuration !== 'number' || minimumFilmDuration <= 0)
-    return res.json('Wrong minimum duration'); // bad practise (will be improved in exercise 1.5)
-
+    return res.json('Wrong minimum duration'); 
   if (!minimumFilmDuration) return res.json(films);
 
   const filmsReachingMinimumDuration = films.filter(
@@ -41,7 +39,6 @@ router.get('/', (req, res) => {
   return res.json(filmsReachingMinimumDuration);
 });
 
-// Read a film from its id in the menu
 router.get('/:id', (req, res) => {
   const indexOfFilmFound = films.findIndex((film) => film.id == req.params.id);
 
@@ -50,7 +47,6 @@ router.get('/:id', (req, res) => {
   return res.json(films[indexOfFilmFound]);
 });
 
-// Create a film
 router.post('/', (req, res) => {
   const title =
     req?.body?.title?.trim()?.length !== 0 ? req.body.title : undefined;
