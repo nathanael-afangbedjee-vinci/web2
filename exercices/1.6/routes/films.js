@@ -84,7 +84,8 @@ router.delete('/:id', (req, res) => {
   const foundIndex = films.findIndex(film => pizza.id == req.params.id);
 
   if (foundIndex < 0) return res.sendStatus(404);
-  if(duration < 0)return res.sendStatus()
+  if(duration < 0)return res.sendStatus(400);
+  if(budget < 0)return res.sendStatus(400);
   const itemsRemovedFromMenu = films.splice(foundIndex, 1);
   const itemRemoved = itemsRemovedFromMenu[0];
 
